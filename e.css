@@ -209,20 +209,23 @@ body {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(90deg, #0071ce, #005bb5);
+  background: linear-gradient(90deg, #0062cc, #0047ab);
   color: white;
-  padding: 14px 22px;
-  border-radius: 30px;
+  padding: 16px 26px;
+  border-radius: 40px;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: all 0.4s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.3);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 #toast.show {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -429,6 +432,44 @@ body {
     height: auto;
   }
 }
+
+/* ===== ADD TO CART BUTTON ANIMATION ===== */
+.product-card button {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card button:active {
+  transform: scale(0.92);
+}
+
+/* Success state */
+.product-card button.added {
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.6);
+}
+
+/* Ripple effect */
+.product-card button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.product-card button.clicked::after {
+  width: 200%;
+  height: 200%;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+
 
 
 
