@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyMart</title>
+  <link rel="stylesheet" href="e.css"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="top-row">
+    <h1 class="logo">Sunil ki Dukan</h1>
+
+    <div class="nav-right">
+      <span id="userName"></span>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+      <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+
+  <div class="search-row">
+    <input type="text" id="search" placeholder="Search products..." />
+    <button>Search</button>
+  </div>
+</nav>
+
+<div class="main-container">
+  <div class="sidebar">
+    <h3>Categories</h3>
+    <ul id="categoryList"></ul>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ⚠️ SCRIPT ORDER MATTERS -->
+<script src="auth.js"></script>
+<script src="product.js"></script>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (user) {
+    document.getElementById("userName").innerText = `Hi, ${user.username}`;
+  }
+</script>
+
+</body>
+</html>
+

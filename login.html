@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | MyMart</title>
+  <link rel="stylesheet" href="e.css">
+  <style>
+    .login-box {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #0071ce;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    .toggle {
+      margin-top: 15px;
+      cursor: pointer;
+      color: #0071ce;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2 id="title">Login</h2>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="handleAuth()">Login</button>
+
+  <p class="toggle" onclick="toggleForm()">Don't have an account? Signup</p>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
