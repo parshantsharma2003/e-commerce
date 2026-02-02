@@ -11,12 +11,20 @@ body {
 }
 
 /* ===== NAVBAR ===== */
+
+
 .navbar {
   background: linear-gradient(90deg, #0071ce, #005bb5);
   padding: 16px 20px;
   color: white;
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+
+  /* 👇 ADD THESE */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
 
 .top-row {
   display: flex;
@@ -468,6 +476,7 @@ body {
   height: 200%;
   transition: width 0.5s ease, height 0.5s ease;
 }
+
 
 
 
