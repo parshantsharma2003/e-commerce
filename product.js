@@ -126,30 +126,40 @@ function filterProducts() {
   renderProducts(filtered);
 }
 
-/* ---------- CART ---------- */
-// function addToCart(id) {
-//   const product = products.find(p => p.id === id);
-//   cart.push(product);
-//   localStorage.setItem("cart", JSON.stringify(cart));
-//   updateCartCount();
-// }
 
-// function updateCartCount() {
-//   document.getElementById("cart-count").innerText = cart.length;
-// }
 
 function addToCart(id, btn) {
   const product = products.find(p => p.id === id);
   const existing = cart.find(item => item.id === id);
 
-  if (existing) existing.qty++;
-  else cart.push({ ...product, qty: 1 });
+  // Add to cart logic
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...product, qty: 1 });
+  }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
-  showToast(`${product.name} added to cart`);
 
+  // 🎉 Toast message
+  showToast(`✅ ${product.name} added to cart`);
+
+  // ✨ Button animation
+  btn.classList.add("clicked");
+  btn.classList.add("added");
+
+  setTimeout(() => {
+    btn.classList.remove("clicked");
+  }, 500);
+
+  // 🛍️ Fly to cart animation
   animateToCart(btn, product.image);
+
+  // Optional: reset button color after 1.2s
+  setTimeout(() => {
+    btn.classList.remove("added");
+  }, 1200);
 }
 
 
@@ -190,6 +200,17 @@ function animateToCart(button, imgSrc) {
   setTimeout(() => img.remove(), 700);
 }
 
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+
 
 
 /* ---------- INIT ---------- */
@@ -199,3 +220,4 @@ updateCartCount();
 
 searchBtn.onclick = filterProducts;
 searchInput.oninput = filterProducts;
+
