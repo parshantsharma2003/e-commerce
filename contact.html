@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | MyMart</title>
+  <link rel="stylesheet" href="e.css">
+</head>
+<body>
+
+<!-- NAVBAR (NO ABOUT / CONTACT HERE) -->
+<nav class="navbar">
+  <div class="top-row">
+    <h1 class="logo">MyMart</h1>
+    <div class="nav-right">
+      <a href="e.html" class="cart">🏠 Shop</a>
+      <a href="cart.html" class="cart">🛒 Cart</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTACT SECTION -->
+<section class="contact-container">
+  <h2>Contact Us</h2>
+  <p class="contact-intro">
+    Have a question, feedback, or suggestion?  
+    We’d love to hear from you!
+  </p>
+
+  <div class="contact-box">
+
+    <!-- FORM -->
+    <form id="contactForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="name" required placeholder="Enter your name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" required placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="message" rows="5" required placeholder="Write your message"></textarea>
+      </div>
+
+      <button type="submit" class="contact-btn">
+        Send Message
+      </button>
+    </form>
+
+    <!-- INFO -->
+    <div class="contact-info">
+      <h3>📍 Our Info</h3>
+      <p><strong>Email:</strong> support@mymart.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Location:</strong> India</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-bottom">
+    © 2026 MyMart | Built with ❤️ using HTML, CSS & JavaScript
+  </div>
+</footer>
+
+<!-- CONTACT JS (WORKING) -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    // Save message to LocalStorage (demo purpose)
+    const messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
+    messages.push({ name, email, message, date: new Date().toLocaleString() });
+    localStorage.setItem("contactMessages", JSON.stringify(messages));
+
+    alert("✅ Message sent successfully!");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
